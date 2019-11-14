@@ -2,6 +2,16 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import './App.css';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Switch, Route, Link } from 'react-router-dom'
+import Catalogues from './Catalogues';
+import Categories from './Categories';
+import Products from './Products';
+import Images from './Images';
+import Videos from './Videos';
+import Customers from './Customers';
+import Baskets from './Baskets';
+import Orders from './Orders';
+import Users from './Users';
 
 const { SubMenu } = Menu;
 const { Header, Footer, Sider, Content } = Layout;
@@ -14,12 +24,12 @@ function App() {
       <Menu
         theme="dark"
         mode="horizontal"
-        defaultSelectedKeys={['2']}
+        defaultSelectedKeys={['1']}
         style={{ lineHeight: '64px' }}
       >
-        <Menu.Item key="1">Catalogues</Menu.Item>
-        <Menu.Item key="2">Catagories</Menu.Item>
-        <Menu.Item key="3">Products</Menu.Item>
+        <Menu.Item key="1"><Link to="/products">Products</Link></Menu.Item>
+        <Menu.Item key="2"><Link to="/customers">Customers</Link></Menu.Item>
+        <Menu.Item key="3"><Link to="/orders">Orders</Link></Menu.Item>
       </Menu>
     </Header>
     <Layout>
@@ -39,10 +49,11 @@ function App() {
               </span>
             }
           >
-            <Menu.Item key="1">option1</Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
+            <Menu.Item key="1"><Link to="/products">Products</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/catalogues">Catalogues</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/categories">Categories</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/images">Images</Link></Menu.Item>
+            <Menu.Item key="5"><Link to="/videos">Videos</Link></Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub2"
@@ -53,33 +64,24 @@ function App() {
               </span>
             }
           >
-            <Menu.Item key="5">option5</Menu.Item>
-            <Menu.Item key="6">option6</Menu.Item>
-            <Menu.Item key="7">option7</Menu.Item>
-            <Menu.Item key="8">option8</Menu.Item>
+            <Menu.Item key="6"><Link to="/customers">Customers</Link></Menu.Item>
+            <Menu.Item key="7"><Link to="/baskets">Baskets</Link></Menu.Item>
+            <Menu.Item key="8"><Link to="/orders">Orders</Link></Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub3"
             title={
               <span>
                 <Icon type="notification" />
-                Orders
+                Users
               </span>
             }
           >
-            <Menu.Item key="9">option9</Menu.Item>
-            <Menu.Item key="10">option10</Menu.Item>
-            <Menu.Item key="11">option11</Menu.Item>
-            <Menu.Item key="12">option12</Menu.Item>
+            <Menu.Item key="9"><Link to="/users">Users</Link></Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
         <Content
           style={{
             background: '#fff',
@@ -88,7 +90,17 @@ function App() {
             minHeight: 280,
           }}
         >
-          Content
+          <Switch>
+            <Route path="/catalogues" component={Catalogues}></Route>
+            <Route path="/categories" component={Categories}></Route>
+            <Route path="/products" component={Products}></Route>
+            <Route path="/images" component={Images}></Route>
+            <Route path="/videos" component={Videos}></Route>
+            <Route path="/customers" component={Customers}></Route>
+            <Route path="/baskets" component={Baskets}></Route>
+            <Route path="/orders" component={Orders}></Route>
+            <Route path="/users" component={Users}></Route>
+          </Switch>
         </Content>
       </Layout>
     </Layout>
