@@ -27,15 +27,11 @@ class Catalogues extends React.Component {
 
     componentDidMount(){
         fetch("http://138.68.36.194/api/v1/catalogues")
-        .then(res => {
-            alert(2);
-            res.json();
-        })
         .then(
             (res) => { 
                 this.setState({
                   isLoaded: true,
-                  items: res.items
+                  items: res
                 });
               },
               // Note: it's important to handle errors here
